@@ -1,0 +1,26 @@
+<section class="main-header">
+  <*img src="images-master/achieve.png">
+</section>
+
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+
+  <p><%= notice %></p>
+
+  <h1>ブログ一覧</h1>
+
+  <% @blogs.each do |blog| %>
+    <p>タイトル:<%= blog.title %></p>
+    <p>本文:<%= blog.content %></p>
+    <%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %>
+    <%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+  <% end %>
+
+  <%= link_to "ブログを作成する", new_blog_path %>
+
+  </div>
+</div>
+
+<div id="page-top-btn" class="page-top-btn">
+    <p><a class="move-page-top" id="move-page-top">▲</a></p>
+</div>
