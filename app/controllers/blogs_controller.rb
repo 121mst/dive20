@@ -14,8 +14,8 @@ before_action :set_blog, only: [:edit, :update, :destroy]
     @blog.user_id = current_user.id
     if @blog.save
       redirect_to blogs_path, notice: "ブログを作成しました！"
+      NoticeMailer.sendmail_blog(@blog).deliver
     else
-      # 入力フォームを再描画。
       render 'new'
     end
   end
