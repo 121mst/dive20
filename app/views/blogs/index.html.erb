@@ -1,4 +1,9 @@
 <section class="main-header">
+  <p class="flash"><%= notice %><%= alert %></p>
+  <img src="<%= asset_path "achieve.png" %>">
+</section>
+
+<section class="main-header">
   <*img src="images-master/achieve.png">
 </section>
 
@@ -12,6 +17,7 @@
   <% @blogs.each do |blog| %>
     <p>タイトル:<%= blog.title %></p>
     <p>本文:<%= blog.content %></p>
+    <p>投稿者:<%= blog.user.name %></p>
     <%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %>
     <%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
   <% end %>

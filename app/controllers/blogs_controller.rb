@@ -11,6 +11,7 @@ before_action :set_blog, only: [:edit, :update, :destroy]
 
   def create
     @blog = Blog.new(blogs_params)
+    @blog.user_id = current_user.id
     if @blog.save
       redirect_to blogs_path, notice: "ブログを作成しました！"
     else
@@ -23,6 +24,7 @@ before_action :set_blog, only: [:edit, :update, :destroy]
   end
 
   def update
+    binding.pry
     @blog.update(blogs_params)
     redirect_to blogs_path, notice: "ブログを更新しました！"
   end
