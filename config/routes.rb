@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy]
 
   root 'blogs#index'
@@ -12,6 +13,10 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  resources :blogs do
+    resources :comments
+    post :confirm, on: :collection
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
