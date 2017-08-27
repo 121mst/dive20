@@ -1,0 +1,24 @@
+<div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <p class="left"><strong>名前    : <%= @user.name %></strong></p>
+    <p class="left"><strong>E-mail : <%= @user.email %></strong></p>
+    <p class="left"><%= profile_img(@user) %></p>
+
+<br>
+<hr/>
+<p class="center"><strong>フォロー</strong></p>
+<hr/>
+  <% @user.followed_users.each do |user| %>
+        <p class="left"><strong>名前 : <%= user.name %></strong></p>
+        <p class="left"><%= profile_img(user) %></p>
+  <% end %>
+
+<hr/>
+<p class="center"><strong>フォロワー</strong></p>
+<hr/>
+<% @user.followers.each do |user| %>
+      <p class="left"><strong>名前 : <%= user.name %></strong></p>
+      <p class="left"><%= profile_img(user) %></p>
+<% end %>
+<%= link_to 'ユーザー一覧', users_path if user_signed_in? %>
+
+</div>

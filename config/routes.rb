@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'notifications/index'
+
   resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   root 'blogs#index'
 
@@ -13,9 +16,15 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  resources :users, only: [:index, :show]
+
   resources :blogs do
     resources :comments
     post :confirm, on: :collection
+  end
+
+  resources :conversations do
+    resources :messages
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

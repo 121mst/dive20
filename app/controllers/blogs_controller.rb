@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
 before_action :set_blog, only: [:show, :edit, :update, :destroy]
+before_action :current_notifications
 
   def index
     @blogs = Blog.all
@@ -12,6 +13,7 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
   def show
     @comment = @blog.comments.build
     @comments = @blog.comments
+    Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
   end
 
   def new
@@ -51,6 +53,11 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
     # idをキーとして値を取得するメソッド
     def set_blog
       @blog = Blog.find(params[:id])
+    end
+
+    before_action :current_notifications, if: :signed_in?
+    def current_notifications
+      @notifications_count = Notification.where(user_id: current_user.id).where(read: false).count
     end
 
 end
