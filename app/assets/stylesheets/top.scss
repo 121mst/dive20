@@ -1,0 +1,22 @@
+body {
+    min-height: 2000px;
+    padding-top: 30px;
+}
+header.jumbotron {
+    height: 510px;
+    background: image-url("body5.JPG") center 0 no-repeat;
+    background-size: cover;
+    }
+h1.jumbotron-h1{
+        text-indent:100%;
+    　　white-space:nowrap;
+    　　overflow:hidden;
+    }
+
+    @media (max-width: 767px){
+    header.jumbotron {
+        height: 410px;
+        background: image-url("body5.JPG") center no-repeat;
+        background-size: cover;
+    }
+  }

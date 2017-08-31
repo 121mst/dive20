@@ -1,35 +1,43 @@
-<section class="main-header">
+<section>
   <p class="flash"><%= notice %><%= alert %></p>
-  <img src="<%= asset_path "achieve.png" %>">
 </section>
 
-<section class="main-header">
-  <*img src="images-master/achieve.png">
-</section>
 
 <div class="container">
-  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+  <div class="wrapper col-md-12">
     <p><%= notice %></p>
-    <h1>ブログ一覧</h1>
-    <%= link_to "ブログを作成する", new_blog_path, class: 'btn btn-default' %>
+    <%= link_to "投稿する", new_blog_path, class: 'btn btn-primary btn-block' %>
     <% @blogs.each do |blog| %>
-      <div class="row">
-        # ブログのタイトルにlink_toでリンクを設定します。
-        <%= link_to blog_path(blog) do %>
-          <h4><strong><%= blog.title %></strong></h4>
-        <% end %>
-        <p><%= blog.content %></p>
-        <p>投稿者:<%= blog.user.name %></p>
-        <p><%= profile_img(blog.user) %></p>
-        <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>
-        <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
-      </div>
+　　 <div class="panel panel-info">
+        <div class="panel-heading">
+　　       <p class="text-left">
+              <%= profile_img(blog.user) %>
+              <strong><%= blog.user.name %></strong>
+              <%= blog.created_at.strftime("%Y-%m-%d %H:%M:%S") %> </p>
+       </div>
+         <div class="panel-body">
+           <p class="text-left"><%= blog.content %></p>
+           <!-- 投稿画像 追加箇所 開始 -->
+           <p>
+             <% if blog.image? %>
+               <div class="thumbnail">
+                 <%= image_tag blog.image %>
+               </div>
+             <% end %>
+           </p>
+           <!-- 投稿画像 追加箇所 終了 -->
+         </div>
+         <div class="list-group-item list-group-item-info">
+           <p class="text-right">
+           <%= link_to "コメントする", blog_path(blog), class: 'btn btn-default btn-xs btn-primary' %>
+           <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-xs btn-primary' %>
+           <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-xs btn btn-primary' %>
+         </p>
+        </div>
+    </div>
     <% end %>
   </div>
 </div>
-
-<%= link_to "ブログを作成する", new_blog_path %>
-
 <div id="page-top-btn" class="page-top-btn">
     <p><a class="move-page-top" id="move-page-top">▲</a></p>
 </div>

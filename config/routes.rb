@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :relationships, only: [:create, :destroy]
 
-  root 'blogs#index'
+  root 'top#index'
 
   devise_for :users, controllers: {
     registrations: "users/registrations",

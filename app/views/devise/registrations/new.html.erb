@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="wrapper col-md-4 col-md-offset-4 col-sm-10">
+  <div class="wrapper col-md-12">
     <h2>サインアップ</h2>
 
     <%= alert %>
@@ -7,27 +7,28 @@
     <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="field">
-        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
+      <div class="form-group">
+        <%= f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder: "メールアドレス" %>
       </div>
 
-      <div class="field">
-        <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control input-lg", placeholder: "名前" %>
       </div>
 
-      <div class="field">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
+      <div class="form-group">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg", placeholder: "パスワード" %>
       </div>
 
-      <div class="field">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "パスワード（確認）" %>
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-lg", placeholder: "パスワード（確認）" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "サインアップ", class: "btn btn-primary btn-block" %>
+      <div class="form-group">
+          <button class="btn btn-primary btn-lg btn-block">Sign UP</button>
       </div>
+
     <% end %>
 
     <%= render "devise/shared/links" %>
-  </div>
+</div>
 </div>

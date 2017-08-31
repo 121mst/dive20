@@ -35,7 +35,6 @@ before_action :current_notifications
   end
 
   def update
-    binding.pry
     @blog.update(blogs_params)
     redirect_to blogs_path, notice: "ブログを更新しました！"
   end
@@ -47,7 +46,7 @@ before_action :current_notifications
 
   private
     def blogs_params
-      params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content, :image, :image_cache, :remove_image)
     end
 
     # idをキーとして値を取得するメソッド
