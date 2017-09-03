@@ -8,22 +8,22 @@
 
 
 30.times do |n|
-#  email = Faker::Internet.email
-#  password = "password"
-#  name = Faker::Name.name
-#  nutzer = User.create!(name: name,
-#               email: email,
-#               password: password,
-#               password_confirmation: password,
-#               uid: SecureRandom.uuid,
-#               )
+  email = Faker::Internet.email
+  password = "password"
+  name = Faker::Name.name
+  nutzer = User.create!(name: name,
+               email: email,
+               password: password,
+               password_confirmation: password,
+               uid: SecureRandom.uuid,
+               )
   blog = Blog.create!(title: "test",
                         content: "TEST+TEST+TEST",
-                        user_id: 1
+                        user_id: nutzer.id
                         )
            2.times do
                blog.comments.create!(content: "Yheeeeee!!!",
-                                      user_id: 9)
+                                      user_id: nutzer.id)
            end
 
 end
