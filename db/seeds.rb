@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-50.times do |n|
+30.times do |n|
   email = Faker::Internet.email
   password = "password"
   name = Faker::Name.name
@@ -17,7 +17,7 @@
                password_confirmation: password,
                uid: SecureRandom.uuid,
                )
-  topic = Blog.create!(title: "test",
+  blog = Blog.create!(title: "test",
                         content: "TEST+TEST+TEST",
                         user_id: nutzer.id
                         )
