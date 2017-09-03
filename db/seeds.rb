@@ -7,15 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-n = 1000000
-while n <= 1000005
+i = 1000
+3.times do |i|
   email = Faker::Internet.email
   password = "password"
   User.create!(email: email,
                password: password,
                password_confirmation: password,
-               name: Faker::Name.name,
-               uid: n
+               name: Faker::Name.name
+               uid:  i
                )
-n=n+1
 end
