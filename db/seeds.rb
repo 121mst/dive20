@@ -6,12 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-3.times do |n|
+
+n = 1000000
+while n <= 1000005
   email = Faker::Internet.email
   password = "password"
   User.create!(email: email,
                password: password,
                password_confirmation: password,
-               name: Faker::Name.name
+               name: Faker::Name.name,
+               uid: n
                )
+n=n+1
 end
