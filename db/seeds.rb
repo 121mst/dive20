@@ -7,14 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-i = 1000
-3.times do |i|
+50.times do |i|
   email = Faker::Internet.email
   password = "password"
   User.create!(email: email,
                password: password,
                password_confirmation: password,
                name: Faker::Name.name
-               uid:  i
+               uid:  i+1
                )
 end
