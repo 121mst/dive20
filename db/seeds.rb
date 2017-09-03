@@ -13,7 +13,7 @@
   User.create!(email: email,
                password: password,
                password_confirmation: password,
-               name: Faker::Name.name
-               uid:  i+1
+               name: Faker::Name.name,
+               uid:  SecureRandom.uuid
                )
 end
